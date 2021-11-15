@@ -1,7 +1,5 @@
 package paqueteDesafio2;
 
-
-import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -94,11 +92,7 @@ public class MainClassDesafio_2 {
 	   }while(opcion != 0);
 		
 	   input.close();
-		
-		
-		
-
-	    
+			    
 	}
 
 }
