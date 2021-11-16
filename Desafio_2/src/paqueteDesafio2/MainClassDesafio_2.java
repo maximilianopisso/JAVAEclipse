@@ -14,7 +14,7 @@ public class MainClassDesafio_2 {
 		// TODO Auto-generated method stub
 
 		int opcion = 5;
-		int codArea =0;
+
 		Scanner input = new Scanner(System.in);
 
 		DateTimeFormatter formatTime = DateTimeFormatter.ofPattern("dd/MM/yy HH:mm:ss");
@@ -50,46 +50,39 @@ public class MainClassDesafio_2 {
 
 			try {
 				opcion = input.nextInt();
+
+				if (opcion != 0) {
+
+					if (opcion == 1) {
+						System.out.println("INGRESE EL CODIGO DE AREA DEL PAIS A BUSCAR ");
+
+						int codArea = input.nextInt(); // SI ME DA UN ERROR ME LO CATCHEA EL TRY DE ARRIBA
+
+						List<Pais> listPaisArea = listPaises.stream().filter(pais -> pais.getCodigoArea() == codArea)
+								.collect(Collectors.toList());
+
+						if (listPaisArea.size() == 0) {
+
+							System.out.println(
+									"NO SE ENCONTRARON REGISTROS CON EL CODIGO DE AREA INGRESADO (" + codArea + ")");
+						} else {
+							System.out.println("EL PAIS CON EL CODIGO DE AREA (+" + codArea + ") ES :");
+							for (Pais paises : listPaisArea) {
+								System.out.println(paises.getNombre() + " (" + paises.getId() + ")");
+							}
+						}
+					} else {
+						System.out.println("LA OPCION INGRESADA NO ES VALIDA. INGRESE NUEVAMENE SU OPCION");
+					}
+
+				} else {
+					System.out.println("Fin Ejecucion: " + formatTime.format(LocalDateTime.now()));
+				}
+				
 			} catch (InputMismatchException ime) {
 				System.out.println("SE INGRESO UN VALOR NO NUMERICO, VUELVA A INGRESAR LA OPCION DESEADA");
 				input.nextLine();
 				opcion = 5;
-			}
-
-			if (opcion != 0) {
-
-				if (opcion == 1) {
-					System.out.println("INGRESE EL CODIGO DE AREA DEL PAIS A BUSCAR ");
-					
-					try {
-						codArea = input.nextInt(); // SI ME DA UN ERROR ME LO CATCHEA EL TRY DE ARRIBA
-						
-					} catch (InputMismatchException ime) {
-						System.out.println("SE INGRESO UN VALOR NO NUMERICO, VUELVA A INGRESAR LA OPCION DESEADA");
-						input.nextLine();
-						
-					}
-					
-
-					List<Pais> listPaisArea = listPaises.stream().filter(pais -> pais.getCodigoArea() == codArea)
-							.collect(Collectors.toList());
-
-					if (listPaisArea.size() == 0) {
-
-						System.out.println(
-								"NO SE ENCONTRARON REGISTROS CON EL CODIGO DE AREA INGRESADO (" + codArea + ")");
-					} else {
-						System.out.println("EL PAIS CON EL CODIGO DE AREA (+" + codArea + ") ES :");
-						for (Pais paises : listPaisArea) {
-							System.out.println(paises.getNombre() + " (" + paises.getId() + ")");
-						}
-					}
-				} else {
-					System.out.println("LA OPCION INGRESADA NO ES VALIDA. INGRESE NUEVAMENE SU OPCION");
-				}
-
-			} else {
-				System.out.println("Fin Ejecucion: " + formatTime.format(LocalDateTime.now()));
 			}
 
 		} while (opcion != 0);
