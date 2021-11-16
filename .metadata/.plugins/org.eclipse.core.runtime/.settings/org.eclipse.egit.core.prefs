@@ -1,5 +1,5 @@
-GitRepositoriesView.GitDirectories=
-GitRepositoriesView.GitDirectories.relative=
+GitRepositoriesView.GitDirectories=C\:\\Users\\mpisso\\eclipse-workspace\\.git;
+GitRepositoriesView.GitDirectories.relative=.git;
 RepositorySearchDialogDeepSearch=false
 RepositorySearchDialogSkipHidden=true
 eclipse.preferences.version=1
