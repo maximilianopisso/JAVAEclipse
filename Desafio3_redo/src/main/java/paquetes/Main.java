@@ -1,16 +1,20 @@
 package paquetes;
 
-//import java.time.LocalDateTime;
-//import java.time.format.DateTimeFormatter;
+//IMPORTA DESDE LAS CLASES CARGADAS EN LAS DEPENDENDIAS DEL ARCHIVOS .JAR DEL DESAFIO ANTERIOR
+import paqueteDesafio2.Pais;
+
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 import java.util.stream.Collectors;
 
+// IMPORTA DESDE LAS DEPENDENCIAS
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.core.LoggerContext;
+
+
 
 public class Main {
 
@@ -19,41 +23,28 @@ public class Main {
 		
 		int opcion = 5;
 		Message log = new Message();    //CREO INSTANCIA DE MESSAGE
-		setearLevelLog(Level.INFO);    //SETEO NIVEL INFO DEL LOG, PARA PODER MOSTRAR MSJ HASTA NIVEL -INFO-
+		//setearLevelLog(Level.INFO);    //ES UN METODO PARA CONFIGURAR EL NIVEL DEL LOGGER. PERO DESPUES LO HICE FUNCIONAR CON EL LOG4J2.XML
 		
 		Scanner input = new Scanner(System.in);
 
-//		DateTimeFormatter formatTime = DateTimeFormatter.ofPattern("dd/MM/yy HH:mm:ss");
-//		System.out.println("INICIO EJECUCION" + formatTime.format(LocalDateTime.now()));
-		log.logMjsInfo("SE INICI EJECUCION"); //MSJ INFO
+	
+		log.logMjsInfo("SE INICIA EJECUCION"); //MSJ INFO
 		
-		Pais argentina = new Pais("ARG", "Argentina", 54);
-		Pais bolivia = new Pais("BOL", "Bolivia", 591);
-		Pais brasil = new Pais("BRA", "Brasil", 55);
-		Pais chile = new Pais("CHI", "Chile", 56);
-		Pais colombia = new Pais("COL", "Colombia", 57);
-		Pais ecuador = new Pais("ECU", "Ecuador", 51);
-		Pais paraguay = new Pais("PGY", "Paraguay", 595);
-		Pais peru = new Pais("PER", "Peru", 51);
-		Pais uruguay = new Pais("UGY", "Uruguay", 598);
-		Pais venezuela = new Pais("VEN", "Venezuela", 58);
-
-		log.logMjsInfo("SE INSTANCIAN TODOS LOS PAISES SUDAMERICANOS"); //MSJ INFO
-		
+			
 		List<Pais> listPaises = new ArrayList<Pais>();
+		listPaises.add(new Pais("ARG", "Argentina", 54));
+		listPaises.add(new Pais("BOL", "Bolivia", 591));
+		listPaises.add(new Pais("BRA", "Brasil", 55));
+		listPaises.add(new Pais("CHI", "Chile", 56));
+		listPaises.add(new Pais("COL", "Colombia", 57));
+		listPaises.add(new Pais("ECU", "Ecuador", 51));
+		listPaises.add(new Pais("PGY", "Paraguay", 595));
+		listPaises.add(new Pais("PER", "Peru", 51));
+		listPaises.add(new Pais("UGY", "Uruguay", 598));
+		listPaises.add(new Pais("VEN", "Venezuela", 58));
 		
-		listPaises.add(argentina);
-		listPaises.add(bolivia);
-		listPaises.add(brasil);
-		listPaises.add(chile);
-		listPaises.add(colombia);
-		listPaises.add(ecuador);
-		listPaises.add(paraguay);
-		listPaises.add(peru);
-		listPaises.add(uruguay);
-		listPaises.add(venezuela);
-
-		log.logMjsInfo("TODOS LOS PAISES INSTANCIADOS SE COLOCAN EN UNA LISTA DE PAISES"); //MSJ INFO
+		log.logMjsInfo("SE INSTANCIAN TODOS LOS PAISES SUDAMERICANOS Y SE COLOCAN EN UNA LISTA DE PAISES "); //MSJ INFO
+		
 		
 		do {
 
@@ -97,6 +88,7 @@ public class Main {
 							} else {
 								System.out.println("\n"+"-------------------------------------------------------");
 								System.out.println("EL PAIS CON EL CODIGO DE AREA (+" + codArea + ") ES :");
+								
 								for (Pais paises : listPaisArea) {
 									System.out.println(paises.getNombre() + " (" + paises.getId() + ")");
 								}
@@ -134,6 +126,8 @@ public class Main {
 
 	}
 
+	// METODO QUE ME PERMITIA SETEAR EL NIVEL DEL LOGGER. NO SE USA PORQUE SE CONFIGURO POR EL LOG4J2.XML EN CARPETA RESOURSES
+	
 	public static void setearLevelLog(Level Level) {
 
 		LoggerContext ctx = (LoggerContext) LogManager.getContext(false);
